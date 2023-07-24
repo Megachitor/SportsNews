@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block index %}
+<div class="inner-page-banner">
+   <div class="container">
+   </div>
+</div>
+<div class="inner-information-text">
+   <div class="container">
+      <h3>{{club.name}}</h3>
+      <ul class="breadcrumb">
+         <li><a href="{% url 'home' %}">Home</a></li>
+         <li class="active">{{club.name}}</li>
+      </ul>
+   </div>
+</div>
+{% endblock index %}
+
+
+{% block content %}
+<section id="contant" class="contant main-heading team">
+   <div class="row">
+      <div class="container">
+
+        {% for player in players %}
+         <div class="col-md-3 column">
+            <div class="card">
+               <img class="img-responsive" src="{{player.image}}" alt="John" style="width:100%">
+               <div class="">
+                  <h4>{{player.name}}</h4>
+                  <p class="title">{{player.position}} | {{player.number}}</p>
+                  <p class="title">Age: {{player.age}}</p>
+                  <p>
+                  {% comment %} <div class="center"><a href="{% url 'player' player.player_key %}"><button class="button">Info</button></a></div> {% endcomment %}
+                  </p>
+               </div>
+            </div>
+         </div>
+        {% endfor %}
+        {% comment %} {% for player in coaches %}
+         <div class="col-md-3 column">
+            <div class="card">
+               
+               <div class="">
+                  <h4>{{player.coach_name}}</h4>
+                  <p class="title">Coach</p>
+                  <p>
+                  <div class="center"><button class="button">Info</button></div>
+                  </p>
+               </div>
+            </div>
+         </div>
+        {% endfor %} {% endcomment %}
+      </div>
+   </div>
+</section>
+{% endblock content %}

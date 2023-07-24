@@ -1,0 +1,141 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block index %}
+<div class="inner-page-banner">
+   <div class="container">
+   </div>
+</div>
+<div class="inner-information-text">
+   <div class="container">
+      <h3>Blog</h3>
+      <ul class="breadcrumb">
+         <li><a href="{% url 'home' %}">Home</a></li>
+         <li class="active">Blog</li>
+      </ul>
+   </div>
+</div>
+{% endblock index %}
+
+{% block content %}
+<section id="contant" class="contant main-heading team">
+   <div class="row">
+      <div class="container">
+         <div class="col-md-9">
+            {% if posts %}
+            {% for post in posts %}
+            <div class="feature-post">
+               <div class="feature-img">
+                  <img src="{{post.image.url}}" class="img-responsive" alt="#" />
+               </div>
+               <div class="feature-cont">
+                  <div class="post-people">
+                     <div class="left-profile">
+                        <div class="post-info">
+                           <img src="{{post.author.image.url}}" alt="#" />
+                           <span>
+                              <h4>{{post.author}}</h4>
+                              <h5>{{post.date}}</h5>
+                           </span>
+                        </div>
+                        <span class="share"></span>
+                     </div>
+                  </div>
+                  <div class="post-heading">
+                     <h3>{{post.name}}</h3>
+                     <p>{{post.description|truncatewords:50}}</p>
+                     <div class="full">
+                        <a class="btn" href="{% url 'single' post.id %}">Read More</a>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            {% endfor %}
+            {% endif %}
+         </div>
+         <div class="col-md-3">
+            <div class="blog-sidebar">
+               <div class="search-bar-blog">
+                  <form>
+                     <input type="text" placeholder="search" />
+                     <button><i class="fa fa-search" aria-hidden="true"></i></button>
+                  </form>
+               </div>
+            </div>
+            <div class="blog-sidebar">
+               <h4 class="heading">Popular News</h4>
+               <div class="category-menu">
+                  <ul>
+                     <li>
+                        <span><img src="{% static 'images/profile-img2.png' %}" alt="#"></span>
+                        <span>
+                           <p>Two touch penalties, imaginary cards</p>
+                           <p class="date">22 Feb, 2016</p>
+                        </span>
+                     </li>
+                  </ul>
+               </div>
+            </div>
+            <aside id="sidebar" class="left-bar">
+               <div class="feature-matchs">
+                  <div class="team-btw-match">
+
+                    {% for match in matches %}
+
+                     <ul>
+                        <li>
+                           <img src="{{match.home.image}}" alt="" style="width:60%">
+                           <span>{{match.home.name}}</span>
+                        </li>
+                        <li class="vs"><span>vs</span></li>
+                        <li>
+                           <img src="{{match.away.image}}" alt="" style="width:70%">
+                           <span>{{match.away.name}}</span>
+                        </li>
+                     </ul>
+
+                     {% endfor %}
+                     
+                  </div>
+               </div>
+            </aside>
+            <aside id="sidebar" class="left-bar">
+               <div class="banner-sidebar">
+                  <img class="img-responsive" src="{% static 'images/match-banner1.jpg' %}" alt="#">
+                  <h3>Argentina vs Chile|Goals of the match | COPA </h3>
+               </div>
+            </aside>
+            <aside id="sidebar" class="right-bar">
+               <div class="banner">
+                  <img class="img-responsive" src="{% static 'images/adds-3.jpg' %}" alt="#">
+               </div>
+            </aside>
+            <aside id="sidebar" class="left-bar">
+               <div class="feature-matchs">
+                  <table class="table table-bordered table-hover">
+                     <thead>
+                        <tr>
+                           <th>#</th>
+                           <th>Team</th>
+                           <th>P</th>
+                           <th>W</th>
+                           <th>L</th>
+                        </tr>
+                        {% for team  in table %}
+                        <tr>
+                           <td>{{team.rank}}</td>
+                           <td><img src="{{team.team.image}}" alt="" style="width:10%">{{team.team.name}}</td>
+                           <td>{{team.played}}</td>
+                           <td>{{team.won}}</td>
+                           <td>{{team.lost}}</td>
+                        </tr>
+                        {% endfor %}
+                     </thead>
+                     
+                  </table>
+               </div>
+            </aside>
+         </div>
+      </div>
+   </div>
+</section>
+{% endblock content %}

@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block index %}
+<div class="inner-page-banner">
+   <div class="container">
+   </div>
+</div>
+<div class="inner-information-text">
+   <div class="container">
+      <h3>Player Info</h3>
+      <ul class="breadcrumb">
+         <li><a href="{% url 'home' %}">Home</a></li>
+         <li class="active">Player Info</li>
+      </ul>
+   </div>
+</div>
+{% endblock index %}
+
+{% block content %}
+<section>
+    <h1>Player section</h1>
+    
+    <img class='center1' src="{{player.player_image}}" style="width:20%">
+    <p>Name: {{player.player_name}}</p>
+    <p>Number: {{player.player_number}}</p>
+    <p>Position: {{player.player_type}}</p>
+    <p>Age: {{player.player_age}}</p>
+    <p>Player Team: {{player.team_name}}</p>
+<section>
+{% endblock content %}

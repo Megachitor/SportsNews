@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% comment %} {% block title %}Home{% endblock title %} {% endcomment %}
+
+{% block index %}
+<div class="inner-page-banner">
+   <div class="container">
+   </div>
+</div>
+<div class="inner-information-text">
+   <div class="container">
+      <h3>Sign-Up</h3>
+      <ul class="breadcrumb">
+         <li><a href="{% url 'home' %}">Home</a></li>
+         <li class="active">Sign-Up</li>
+      </ul>
+   </div>
+</div>
+{% endblock index %}
+
+{% block content %}
+
+<div>
+    {% comment %} {% if user.is_authenticated %}
+    <h1>ERROR 404</h1>
+    {% else %} {% endcomment %}
+    
+
+    <p>Sign Up</p>
+    <form method="post">
+    {% csrf_token %}
+    {% for obj in form %}
+    <p>{{obj.name}}</p>
+    <p>{{obj}}</p>
+    {% endfor %}
+    <button type="submit" class='btn center'>Sign Up</button>
+    </form>
+    {% comment %} {% endif %} {% endcomment %}
+</div>
+
+{% endblock content %}

@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block index %}
+<div class="inner-page-banner">
+   <div class="container">
+   </div>
+</div>
+<div class="inner-information-text">
+   <div class="container">
+      <h3>Teams</h3>
+      <ul class="breadcrumb">
+         <li><a href="{% url 'home' %}">Home</a></li>
+         <li class="active">Teams</li>
+      </ul>
+   </div>
+</div>
+{% endblock index %}
+
+
+{% block content %}
+<section id="contant" class="contant main-heading team">
+   <div class="row">
+      <div class="container">
+      {% comment %} {{teams}} {% endcomment %}
+      {% for team in teams %}
+         <div class="col-md-3 column">
+            <div class="card">
+               <img class="img-responsive" src="{{team.image}}" alt="John" style="width:100%">
+               <div class="">
+                  <h4>{{team.name}}</h4>
+                  <p class="title">FC</p>
+                  <p>
+                  <div class="center"><a href="{% url 'command' team.index %}"><button class="button">Contact</button></a></div>
+                  </p>
+               </div>
+            </div>
+         </div>
+      {% endfor %}
+      </div>
+   </div>
+</section>
+{% endblock content %}

@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block index %}
+<div class="inner-page-banner">
+   <div class="container">
+   </div>
+</div>
+<div class="inner-information-text">
+   <div class="container">
+      <h3>News</h3>
+      <ul class="breadcrumb">
+         <li><a href="{% url 'home' %}">Home</a></li>
+         <li class="active">News</li>
+      </ul>
+   </div>
+</div>
+{% endblock index %}
+
+{% block content %}
+<section id="contant" class="contant main-heading single-blog">
+   <div class="row">
+      <div class="container">
+         <div class="col-md-9">
+            <div class="feature-post">
+               <div class="feature-img">
+                  <img src="{{article.image_url}}" class="img-responsive" alt="#" />
+               </div>
+               <div class="feature-cont">
+                  <div class="post-people">
+                     <div class="left-profile">
+                        <div class="post-info">
+                           {% comment %} <img src="{{post.author.image.url}}" alt="#" /> {% endcomment %}
+                           {% comment %} <img src="{% static 'images/profile-img.png' %}" alt="#" /> {% endcomment %}
+                           <span>
+                              {% comment %} <h4>{{post.author}}</h4> {% endcomment %}
+                              <h5>{{article.date}}</h5>
+                           </span>
+                        </div>
+                        <span class="share"></span>
+                     </div>
+                  </div>
+                  <div class="post-heading">
+                     <h3>{{article.name}}</h3>
+                     <p>{{article.description}}</p></br>
+                     <p>{{article.content}}</p>
+                  </div>
+               </div>
+      
+            </div>
+            <div class="feature-contant">
+            </div>
+         </div>
+         <div class="col-md-3">
+            <div class="blog-sidebar">
+               <div class="search-bar-blog">
+                  <form>
+                     <input type="text" placeholder="search" />
+                     <button><i class="fa fa-search" aria-hidden="true"></i></button>
+                  </form>
+               </div>
+            </div>
+            <div class="blog-sidebar">
+               <h4 class="heading">Top Categories</h4>
+               <div class="category-menu">
+                  <ul>
+                     <li><a href="#">Cricket</a></li>
+                     <li><a href="#">Football</a></li>
+                     <li><a href="#">Hockey</a></li>
+                     <li><a href="#">Tennis</a></li>
+                     <li><a href="#">Basketball</a></li>
+                     <li><a href="#">Golf</a></li>
+                     <li><a href="#">Cycling</a></li>
+                     <li><a href="#">Motorsports</a></li>
+                  </ul>
+               </div>
+            </div>
+            <div class="blog-sidebar">
+               <h4 class="heading">Popular News</h4>
+               <div class="category-menu">
+                  <ul>
+                     <li>
+                        <span><img src="{% static 'images/profile-img2.png' %}" alt="#"></span>
+                        <span>
+                           <p>Two touch penalties, imaginary cards</p>
+                           <p class="date">22 Feb, 2016</p>
+                        </span>
+                     </li>
+                  </ul>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</section> 
+{% endblock content %}    
